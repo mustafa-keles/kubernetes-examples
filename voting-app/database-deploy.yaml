@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-database
+  template:   # for pod definition
+    metadata:
+      labels:
+        app: postgres-database
+    spec:
+      containers:
+      - name: database
+        image: postgres
+        ports:
+        - containerPort: 5432
+        env:
+          - name: POSTGRES_USER
+            value: "postgres"
+          - name: POSTGRES_PASSWORD
+            value: "postgres"
+          - name: POSTGRES_HOST_AUTH_METHOD
+            value: trust
