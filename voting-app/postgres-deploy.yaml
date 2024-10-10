@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres-database
+      app: postgres-pod
   template:   # for pod definition
     metadata:
       labels:
