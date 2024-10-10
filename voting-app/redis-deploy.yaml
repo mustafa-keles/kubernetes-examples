@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis
+  name: redis-deploy
+  labels:
+    app: demo-voting-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: redis
+      app: redis-pod
   template:   # for pod definition
     metadata:
       name: redis-pod
       labels:
-        app: redis
+        app: redis-pod
     spec:
       containers:
       - name: redis
@@ -29,7 +31,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: voting
+    app: redis-pod
   ports:
   - port: 6379
     targetPort: 6379
