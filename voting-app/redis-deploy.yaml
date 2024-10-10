@@ -9,6 +9,7 @@ spec:
       app: redis
   template:   # for pod definition
     metadata:
+      name: redis-pod
       labels:
         app: redis
     spec:
