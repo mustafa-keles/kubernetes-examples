@@ -21,6 +21,13 @@ spec:
         image: kodekloud/examplevotingapp_vote:v1
         ports:
         - containerPort: 80
+        resources:
+          limits:
+            cpu: "1"
+            memory: 200Mi
+        requests:
+            cpu: "0.5"
+            memory: 100Mi
 ---
 apiVersion: v1
 kind: Service
