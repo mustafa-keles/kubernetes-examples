@@ -15,4 +15,10 @@ spec:
       containers:
       - name: worker
         image: kodekloud/examplevotingapp_worker:v1
-
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
