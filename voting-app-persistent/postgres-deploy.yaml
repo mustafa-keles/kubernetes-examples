@@ -18,12 +18,28 @@ spec:
         ports:
         - containerPort: 5432
         env:
-          - name: POSTGRES_USER
-            value: "postgres"
-          - name: POSTGRES_PASSWORD
-            value: "postgres"
-          - name: POSTGRES_HOST_AUTH_METHOD
-            value: trust
+        # Define the environment variable
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+              name: postgres-cm
+              # Specify the key associated with the value
+              key: POSTGRES_USER        
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+              name: postgres-cm
+              # Specify the key associated with the value
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_HOST_AUTH_METHOD
+          valueFrom:
+            configMapKeyRef:
+              # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+              name: postgres-cm
+              # Specify the key associated with the value
+              key: POSTGRES_HOST_AUTH_METHOD
         volumeMounts:
           - name: postgres-persistent-storage
             mountPath: /var/lib/postgresql/data
