@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: math
+spec:
+  template: # for pod definition
+    spec:
+      containers:
+      - name: math
+        image: ubuntu
+        command: ["expr", "6", "+", "8"]
+      restartPolicy: Never
+  backoffLimit: 4
