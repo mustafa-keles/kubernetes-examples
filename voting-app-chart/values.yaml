@@ -1,0 +1,12 @@
+votingApp:
+  appName: my-other-app   # this is for the name of deployment
+  replica: 5
+  image: kodekloud/examplevotingapp_vote:v1
+resultApp:
+  appName: result-deployment
+pvc:
+  accessMode: ReadWriteOnce
+  storageCapacity: 1Gi
+pv:
+  accessMode: ReadWriteOnce
+  
